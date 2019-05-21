@@ -1,1 +1,107 @@
-print: hello world
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="myCSS.css">
+    <style>
+      .title{
+        background-color:#FFB6C1;
+        border-style:outset;
+      }
+      body{
+        background-color:#77dd77;
+        height:100%;
+      }
+      .navBar{
+        background-color:#FFB6C1;
+        width:20%;
+        float:left;
+        height:200%;
+      }
+      .contentPanel{
+
+      }
+      html{
+        height:100%;
+      }
+      .pagebreak{
+        clear:both;
+      }
+      .theTarget{
+        color:purple;
+      }
+      .secondParagraph{
+        background-color:pink;
+      }
+    </style>
+    <title>
+      My First Webpage
+    </title>
+  </head>
+  <body>
+  
+    <div class="title">
+      <center>
+        <p>
+          This is my first website
+        </p>
+      </center>
+  
+    <div class="contentPanel">
+      <center>
+      
+      
+        <p class="theTarget" id="helloWorldSentence">
+          HELLO WORLD!
+        </p>
+        
+        
+        <p class="secondParagraph" id="par2" onmouseout="mouseLeft()" onmouseover="mouseOverFunction()">
+          This is my second paragraph
+        </p>
+        
+        <img src="snakes_on_a_plane.jpg"/>
+        <br/>
+        
+        
+        <button onclick="tryMeButton()">Click me</button> 
+        <br/>
+        <canvas id="myCanvas" width="300" height="400"></canvas> 
+        
+      </center>
+    </div>
+    
+    <div class="pagebreak">
+    </div>
+  
+  
+    <script>
+      // Here are my global variables
+      var colorChanger = 1;
+      var mouseIsOver = false;
+      var c = document.getElementById("myCanvas");
+      var theCanvas = c.getContext("2d");
+      var xLoc = 10;
+      var yLoc = 20;
+      var upArrowPressedDown = false;
+      var downArrowPressedDown = false;
+      var leftArrowPressedDown = false;
+      var rightArrowPressedDown = false;
+      
+      /*
+      *  Here is another example of how to attach a function to a button
+      */
+      function tryMeButton()
+      {
+        var theElement = document.getElementById("helloWorldSentence");
+        if(colorChanger ==1)
+        {
+          theElement.style.color="pink";
+          colorChanger = 2;
+        }else {
+          theElement.style.color="purple";
+          colorChanger = 1;
+        }
+        
+      }
+      
+  </script>
+    
