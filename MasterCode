@@ -1,1 +1,211 @@
-print: hello world
+
+<html>
+  <head>
+    <title>My First Website</title>
+    <style>
+      body{
+        background-color:#e6ffff;
+        
+      }
+      p{
+        color:red;
+        font-size:30px;
+      }
+      
+      .MyCalculator{
+         width:240px;
+         margin-top:5px;
+         text-align:center;
+         background-color:tan;
+         padding:10px;
+
+      }
+      
+      .NumBtn{
+        height: 40px;
+        margin-top:5px;
+        font-size:150%;
+        border-width:3px;
+      }
+      
+      .readout{
+        width:100%;
+        height:50px;
+        background-color:DarkSlateGrey;
+        text-align:right;
+        color:lawngreen;
+        font-size:300%;
+        font-family:monospace;
+        font-weight:bold;
+        
+      }
+    
+      .OpBtn{
+         width:23%;
+         color:red;
+         
+        
+      }
+      
+      .Restart{
+        width:25%
+        height:100px;
+        background-color:red;
+        text-align:middle;
+        color:lawngreen;
+        font-size:300%;
+        font-family:monospace;
+        font-weight:bold;
+    
+    </style>
+  
+  </head>
+  <body>
+    <p>Hello World</p>
+    <p>This is my second paragraph</p>
+    <img src="ironman.jpeg"/>
+  
+    <div class="MyCalculator">
+    
+      <div class="readout" id="numdisplay">
+      
+      </div>
+      
+      <button class="NumBtn" onclick="PressNumberButton(1)">1</button>
+      <button class="NumBtn" onclick="PressNumberButton(2)">2</button>
+      <button class="NumBtn" onclick="PressNumberButton(3)">3</button>
+      <br>
+      <button class="NumBtn" onclick="PressNumberButton(4)">4</button>
+      <button class="NumBtn" onclick="PressNumberButton(5)">5</button>
+      <button class="NumBtn" onclick="PressNumberButton(6)">6</button>
+      <br>
+      <button class="NumBtn" onclick="PressNumberButton(7)">7</button>
+      <button class="NumBtn" onclick="PressNumberButton(8)">8</button>
+      <button class="NumBtn" onclick="PressNumberButton(9)">9</button>
+      <br>
+      <button class="NumBtn" onclick="PressNumberButton(0)">0</button>
+      <hr>
+      <button class="OpBtn" onclick="PressOperator('+')">+</button>
+      <button class="OpBtn" onclick="PressOperator('-')">-</button>
+      <button class="OpBtn" onclick="PressOperator('*')">*</button>
+      <button class="OpBtn" onclick="PressOperator('/')">/</button>
+      <br>
+      <button class="OpBtn" onclick="clearScreen()">Clear</button>
+      <button class="OpBtn" onclick="PressOperator('=')">=</button>
+      
+      <button class="Restart" onclick="RestartSaved()">Restart</button>
+    </div>
+  
+  
+    <script>
+      var currentTotal = 0;
+      var prevOp = "=";
+      checkCookie(); 
+      RestartSaved();
+      
+      function PressNumberButton(buttonNum){
+        numdisplay.innerText = numdisplay.innerText + buttonNum;
+        
+      }
+      
+      function PressOperator(opPressed){
+        var displaySave = Number(numdisplay.innerText);
+        if(prevOp == "+"){
+          currentTotal = currentTotal + displaySave; 
+        }
+        if(prevOp == "-"){
+          currentTotal = currentTotal - displaySave; 
+        }
+        if(prevOp == "*"){
+          currentTotal = currentTotal * displaySave; 
+        }
+        if(prevOp == "/"){
+          currentTotal = currentTotal / displaySave; 
+        }
+        if(prevOp == "="){
+          currentTotal = displaySave; 
+        }
+        
+        if(opPressed == "="){
+          numdisplay.innerText = currentTotal; 
+        }else{
+          numdisplay.innerText = ""; 
+        }
+        
+        prevOp = opPressed;
+        
+        
+        
+      }
+      
+      function clearScreen(){
+        numdisplay.innertext = "";
+        currentToal = 0;
+        
+        
+      }
+      
+      
+      //this is the code for the cookie***************************************************************************
+      function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+      
+      function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
+      function checkCookie() {
+        var user = getCookie("username");
+        if (user != "") {
+          alert("Welcome again " + user);
+        } else {
+          user = prompt("Please enter your name:", "");
+          if (user != "" && user != null) {
+            setCookie("username", user, 365);
+          }
+        }
+      }
+      
+      function RestartSaved() {
+        if ((user = "username") || (user = "")) {
+          user = prompt("Please enter your name:", "");
+          if (user != "" && user != null) {
+            setCookie("username", user, 365);
+          }
+        }
+      }
+    
+    
+    
+    
+    </script>
+
+
+    
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
